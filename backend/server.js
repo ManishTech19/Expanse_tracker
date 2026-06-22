@@ -12,7 +12,12 @@ const app = express();
 const port = 4000;
 
 // MIDDLEWARES
-app.use(cors());
+app.use(
+  cors({
+    origin: ["http://localhost:5173", process.env.FRONTEND_URL],
+    credentials: true,
+  })
+);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
